@@ -1,0 +1,27 @@
+%得到改变密钥前后的低频压缩图像及差值图像
+clc;
+clear all;
+%使用原始密钥得到低频压缩图像及差值图像
+[ILL1,ILL2,ILL3]=extract('wm_lena.bmp',20112685,0.55);
+subplot(3,3,1),imshow(ILL1*16);title('水印低频压缩图像');
+subplot(3,3,2),imshow(ILL2*16);title('内容低频压缩图像');
+subplot(3,3,3),imshow(ILL3);title('差值低频压缩图像');
+imwrite(ILL1*16,'lena_1.bmp');
+imwrite(ILL2*16,'lena_2.bmp');
+imwrite(ILL3,'lena_3.bmp');
+%改变量化密钥得到低频压缩图像及差值图像
+[ILL1,ILL2,ILL3]=extract('wm_lena.bmp',26852011,0.55);
+subplot(3,3,4),imshow(ILL1*16);title('改变key1水印低频压缩图像');
+subplot(3,3,5),imshow(ILL2*16);title('改变key1内容低频压缩图像');
+subplot(3,3,6),imshow(ILL3);title('改变key1差值低频压缩图像');
+imwrite(ILL1*16,'k1_lena_1.bmp');
+imwrite(ILL2*16,'k1_lena_2.bmp');
+imwrite(ILL3,'k1_lena_3.bmp');
+%改变混沌密钥得到低频压缩图像及差值图像
+[ILL1,ILL2,ILL3]=extract('wm_lena.bmp',20112685,0.99);
+subplot(3,3,7),imshow(ILL1*16);title('改变key2水印低频压缩图像');
+subplot(3,3,8),imshow(ILL2*16);title('改变key2内容低频压缩图像');
+subplot(3,3,9),imshow(ILL3);title('改变key2差值低频压缩图像');
+imwrite(ILL1*16,'k2_lena_1.bmp');
+imwrite(ILL2*16,'k2_lena_2.bmp');
+imwrite(ILL3,'k2_lena_3.bmp');

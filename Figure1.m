@@ -1,0 +1,24 @@
+%得到4组原始图像和含水印图像并计算PSNR
+clc;
+clear all;
+ps=zeros(1,4);
+%以lena.bmp为原始图像，得到含水印图像wm_lena.bmp并计算PSNR
+[I,II,W,IIW]=embed('lena.bmp','wm_lena.bmp',20112685,0.55);
+subplot(2,4,1),imshow(I);title('lena原始图像');
+subplot(2,4,5),imshow(IIW);title('lena含水印图像');
+ps(1)=psnr(I,IIW);
+%以mena.bmp为原始图像，得到含水印图像wm_mena.bmp并计算PSNR
+[I,II,W,IIW]=embed('mena.bmp','wm_mena.bmp',20112685,0.55);
+subplot(2,4,2),imshow(I);title('mena原始图像');
+subplot(2,4,6),imshow(IIW);title('mena含水印图像');
+ps(2)=psnr(I,IIW);
+%以goldhill.bmp为原始图像，得到含水印图像wm_goldhill.bmp并计算PSNR
+[I,II,W,IIW]=embed('goldhill.bmp','wm_goldhill.bmp',20112685,0.55);
+subplot(2,4,3),imshow(I);title('goldhill原始图像');
+subplot(2,4,7),imshow(IIW);title('goldhill含水印图像');
+ps(3)=psnr(I,IIW);
+%以aerial.bmp为原始图像，得到含水印图像wm_aerial.bmp并计算PSNR
+[I,II,W,IIW]=embed('aerial.bmp','wm_aerial.bmp',20112685,0.55);
+subplot(2,4,4),imshow(I);title('aerial原始图像');
+subplot(2,4,8),imshow(IIW);title('aerial含水印图像');
+ps(4)=psnr(I,IIW);
